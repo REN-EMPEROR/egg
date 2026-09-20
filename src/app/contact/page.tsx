@@ -34,47 +34,54 @@ export default function ContactPage() {
     setSubmitted(true);
   };
 
+  /* Shared input class for accessibility and brand consistency */
+  const inputClass =
+    "w-full px-3.5 py-2.5 rounded-lg border border-eggshell-deep bg-eggwhite text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-yolk focus:border-yolk";
+
+  const labelClass =
+    "block text-xs font-bold uppercase tracking-wider text-charcoal mb-1.5";
+
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      {/* Top Banner */}
+    <div className="bg-eggwhite min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      {/* Page Header */}
       <div className="max-w-7xl mx-auto mb-12 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yolk-light border border-yolk text-charcoal text-xs font-bold uppercase tracking-wider mb-4">
           Direct Farm Inquiries
         </div>
-        <h1 className="font-serif-farm text-4xl sm:text-5xl font-extrabold text-[#1F382B] tracking-tight">
-          Wholesale & Partner Inquiries
+        <h1 className="font-serif-farm text-4xl sm:text-5xl font-extrabold text-charcoal tracking-tight">
+          Wholesale &amp; Partner Inquiries
         </h1>
-        <div className="w-24 h-1 bg-[#D97706] mx-auto rounded-full my-4" />
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-[#5C4F41] leading-relaxed">
+        <div className="w-24 h-1 bg-yolk mx-auto rounded-full my-4" />
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-charcoal-light leading-relaxed">
           Tailored for restaurants, pastry chefs, artisanal bakeries, local grocers, and institutional food programs seeking regular, cold-chain farm-direct deliveries.
         </p>
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Left Column: Contact Form */}
-        <div className="lg:col-span-7 bg-[#FFFDFB] rounded-2xl border border-[#E3D8CA] p-8 sm:p-10 shadow-sm">
+        {/* ── LEFT: Form ─────────────────────────────────────────────────── */}
+        <div className="lg:col-span-7 bg-white rounded-2xl border border-eggshell-deep p-8 sm:p-10 shadow-sm">
           {submitted ? (
-            <div className="py-12 px-4 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto text-2xl font-bold border border-emerald-300">
+            /* Success state */
+            <div className="py-12 px-4 text-center space-y-5">
+              <div className="w-16 h-16 rounded-full bg-yolk flex items-center justify-center mx-auto text-charcoal text-2xl font-bold shadow-sm">
                 &check;
               </div>
-              <h2 className="font-serif-farm text-2xl sm:text-3xl font-bold text-[#1F382B]">
+              <h2 className="font-serif-farm text-2xl sm:text-3xl font-bold text-charcoal">
                 Inquiry Received!
               </h2>
-              <p className="text-sm text-[#544638] max-w-md mx-auto leading-relaxed">
-                Thank you, <strong>{formData.contactName || "valued partner"}</strong>. We have logged your request for <strong>{formData.businessName || "your organization"}</strong>. Our wholesale dispatch team will review route capacity and reach out within 1 business day.
+              <p className="text-sm text-charcoal-light max-w-md mx-auto leading-relaxed">
+                Thank you, <strong className="text-charcoal">{formData.contactName || "valued partner"}</strong>. We have logged your request for{" "}
+                <strong className="text-charcoal">{formData.businessName || "your organization"}</strong>. Our wholesale dispatch team will review route capacity and reach out within 1 business day.
               </p>
-              <div className="pt-4 border-t border-[#EAE1D3] max-w-md mx-auto text-xs text-[#7A6B5C]">
+              <div className="pt-4 border-t border-eggshell-mid max-w-md mx-auto text-xs text-charcoal-light">
                 Need immediate coordination? Call our packing shed directly at{" "}
-                <span className="font-mono text-[#1F382B] font-bold">(555) 382-3447</span>.
+                <span className="font-mono text-charcoal font-bold">(555) 382-3447</span>.
               </div>
-              <div className="pt-6">
+              <div className="pt-4">
                 <button
                   type="button"
-                  onClick={() => {
-                    setSubmitted(false);
-                  }}
-                  className="px-6 py-2.5 rounded-md bg-[#EAE2D5] text-[#1F382B] text-xs font-bold uppercase tracking-wider hover:bg-[#DCD0C0] transition"
+                  onClick={() => setSubmitted(false)}
+                  className="px-6 py-2.5 rounded-md bg-yolk text-charcoal text-xs font-bold uppercase tracking-wider hover:bg-yolk-dark transition"
                 >
                   Submit Another Inquiry
                 </button>
@@ -83,56 +90,38 @@ export default function ContactPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <h2 className="font-serif-farm text-2xl font-bold text-[#1F382B] mb-1">
+                <h2 className="font-serif-farm text-2xl font-bold text-charcoal mb-1">
                   Wholesale Requisition Form
                 </h2>
-                <p className="text-xs text-[#7A6C5C]">
+                <p className="text-xs text-charcoal-light">
                   Please fill out your kitchen or store details. No payment or credit card is collected on this catalog.
                 </p>
               </div>
 
               {/* Inquiry Type */}
               <div>
-                <label
-                  htmlFor="inquiryType"
-                  className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-2"
-                >
+                <label htmlFor="inquiryType" className={labelClass}>
                   I Am Inquiring As A:
                 </label>
                 <select
                   id="inquiryType"
                   value={formData.inquiryType}
-                  onChange={(e) =>
-                    setFormData({ ...formData, inquiryType: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                  onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                  className={inputClass}
                 >
-                  <option value="wholesale-restaurant">
-                    Restaurant / Brunch Kitchen / Cafe (Commercial Flats)
-                  </option>
-                  <option value="bakery">
-                    Artisan Bakery / Pastry Chef (High Yolk Viscosity)
-                  </option>
-                  <option value="grocery-stockist">
-                    Independent Grocery / Co-op Retail Stockist (Barcoded Cartons)
-                  </option>
-                  <option value="community-buying-club">
-                    Community Food Club / Buying Cooperative
-                  </option>
-                  <option value="general">
-                    Individual / General Farm Stand Question
-                  </option>
+                  <option value="wholesale-restaurant">Restaurant / Brunch Kitchen / Cafe (Commercial Flats)</option>
+                  <option value="bakery">Artisan Bakery / Pastry Chef (High Yolk Viscosity)</option>
+                  <option value="grocery-stockist">Independent Grocery / Co-op Retail Stockist (Barcoded Cartons)</option>
+                  <option value="community-buying-club">Community Food Club / Buying Cooperative</option>
+                  <option value="general">Individual / General Farm Stand Question</option>
                 </select>
               </div>
 
-              {/* Name & Business Name */}
+              {/* Name & Business */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label
-                    htmlFor="contactName"
-                    className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                  >
-                    Your Full Name <span className="text-amber-700">*</span>
+                  <label htmlFor="contactName" className={labelClass}>
+                    Your Full Name <span className="text-yolk-darker">*</span>
                   </label>
                   <input
                     type="text"
@@ -140,18 +129,12 @@ export default function ContactPage() {
                     required
                     placeholder="e.g., Chef Marcus Rivera"
                     value={formData.contactName}
-                    onChange={(e) =>
-                      setFormData({ ...formData, contactName: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                    onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                    className={inputClass}
                   />
                 </div>
-
                 <div>
-                  <label
-                    htmlFor="businessName"
-                    className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                  >
+                  <label htmlFor="businessName" className={labelClass}>
                     Business / Restaurant Name
                   </label>
                   <input
@@ -159,10 +142,8 @@ export default function ContactPage() {
                     id="businessName"
                     placeholder="e.g., Hearth & Timber Bistro"
                     value={formData.businessName}
-                    onChange={(e) =>
-                      setFormData({ ...formData, businessName: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                    onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+                    className={inputClass}
                   />
                 </div>
               </div>
@@ -170,11 +151,8 @@ export default function ContactPage() {
               {/* Email & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                  >
-                    Email Address <span className="text-amber-700">*</span>
+                  <label htmlFor="email" className={labelClass}>
+                    Email Address <span className="text-yolk-darker">*</span>
                   </label>
                   <input
                     type="email"
@@ -182,19 +160,13 @@ export default function ContactPage() {
                     required
                     placeholder="marcus@hearthandtimber.com"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className={inputClass}
                   />
                 </div>
-
                 <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                  >
-                    Phone Number <span className="text-amber-700">*</span>
+                  <label htmlFor="phone" className={labelClass}>
+                    Phone Number <span className="text-yolk-darker">*</span>
                   </label>
                   <input
                     type="tel"
@@ -202,21 +174,16 @@ export default function ContactPage() {
                     required
                     placeholder="(555) 019-2834"
                     value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className={inputClass}
                   />
                 </div>
               </div>
 
-              {/* City / Location & Volume */}
+              {/* City & Volume */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label
-                    htmlFor="city"
-                    className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                  >
+                  <label htmlFor="city" className={labelClass}>
                     Delivery City / Town
                   </label>
                   <input
@@ -224,27 +191,19 @@ export default function ContactPage() {
                     id="city"
                     placeholder="e.g., Riverdale or Millfield"
                     value={formData.city}
-                    onChange={(e) =>
-                      setFormData({ ...formData, city: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    className={inputClass}
                   />
                 </div>
-
                 <div>
-                  <label
-                    htmlFor="volume"
-                    className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                  >
+                  <label htmlFor="volume" className={labelClass}>
                     Estimated Weekly Volume
                   </label>
                   <select
                     id="volume"
                     value={formData.volume}
-                    onChange={(e) =>
-                      setFormData({ ...formData, volume: e.target.value })
-                    }
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                    onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
+                    className={inputClass}
                   >
                     <option value="1-5-cases">1 – 5 Cases / week (15 – 75 Dozen)</option>
                     <option value="6-15-cases">6 – 15 Cases / week (90 – 225 Dozen)</option>
@@ -255,12 +214,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Egg Varieties of Interest */}
+              {/* Variety checkboxes */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-2">
+                <label className={labelClass}>
                   Varieties of Interest (Select All That Apply):
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#3E3226]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-charcoal">
                   {[
                     "Pasture-Raised Heritage Brown",
                     "Certified Organic Free-Range",
@@ -271,13 +230,13 @@ export default function ContactPage() {
                   ].map((variety) => (
                     <label
                       key={variety}
-                      className="flex items-center gap-2 p-2 rounded-md bg-[#FAF4EB] border border-[#E5DAC8] cursor-pointer hover:bg-[#F2E8DA]"
+                      className="flex items-center gap-2 p-2.5 rounded-md bg-eggshell border border-eggshell-mid cursor-pointer hover:bg-yolk-xlight hover:border-yolk/40 transition"
                     >
                       <input
                         type="checkbox"
                         checked={formData.varieties.includes(variety)}
                         onChange={() => handleCheckboxChange(variety)}
-                        className="rounded text-[#1F382B] focus:ring-[#1F382B]"
+                        className="rounded accent-yolk-darker"
                       />
                       <span className="font-medium">{variety}</span>
                     </label>
@@ -285,35 +244,30 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Message / Delivery Notes */}
+              {/* Message */}
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-xs font-bold uppercase tracking-wider text-[#4A3D30] mb-1.5"
-                >
-                  Delivery Requirements & Questions
+                <label htmlFor="message" className={labelClass}>
+                  Delivery Requirements &amp; Questions
                 </label>
                 <textarea
                   id="message"
                   rows={4}
                   placeholder="Include preferred delivery days, dock access details, or specific culinary specifications..."
                   value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#D5C7B5] bg-[#FAF7F2] text-[#2C2723] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F382B]"
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className={inputClass}
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* ── PRIMARY SUBMIT BUTTON – yolk yellow ── */}
               <div>
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-6 rounded-lg bg-[#1F382B] text-white text-sm font-bold uppercase tracking-wider hover:bg-[#2A4D3B] transition shadow-sm"
+                  className="w-full py-3.5 px-6 rounded-lg bg-yolk text-charcoal text-sm font-bold uppercase tracking-wider hover:bg-yolk-dark transition shadow-sm"
                 >
                   Submit Wholesale Inquiry
                 </button>
-                <p className="text-[11px] text-center text-[#857463] mt-2">
+                <p className="text-[11px] text-center text-charcoal-light mt-2">
                   No credit card required. Informational wholesale catalog inquiry only.
                 </p>
               </div>
@@ -321,103 +275,96 @@ export default function ContactPage() {
           )}
         </div>
 
-        {/* Right Column: Farm Information & Policies */}
+        {/* ── RIGHT: Farm Info sidebar ────────────────────────────────────── */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Direct Farm Information Box */}
-          <div className="bg-[#FAF4EC] rounded-2xl border border-[#E2D6C6] p-6 sm:p-8 space-y-6">
-            <h3 className="font-serif-farm text-xl font-bold text-[#1F382B] border-b border-[#DCD0BF] pb-3">
-              Farm & Packing Shed Contacts
+          {/* Contact Box */}
+          <div className="bg-white rounded-2xl border border-eggshell-deep p-6 sm:p-8 space-y-6 shadow-sm">
+            <h3 className="font-serif-farm text-xl font-bold text-charcoal border-b border-eggshell-mid pb-3">
+              Farm &amp; Packing Shed Contacts
             </h3>
 
-            <div className="space-y-4 text-xs text-[#524436]">
+            <div className="space-y-4 text-xs text-charcoal-light">
               <div>
-                <strong className="block text-sm text-[#1F382B]">
-                  Packing Facility & Dispatch Shed:
+                <strong className="block text-sm text-charcoal">
+                  Packing Facility &amp; Dispatch Shed:
                 </strong>
                 <span>4180 Old Pasture Road, Millfield Valley, State 14850</span>
               </div>
-
               <div>
-                <strong className="block text-sm text-[#1F382B]">
+                <strong className="block text-sm text-charcoal">
                   Wholesale Dispatch Phone:
                 </strong>
-                <span className="font-mono text-sm font-semibold text-[#1F382B]">
+                <span className="font-mono text-sm font-semibold text-charcoal">
                   (555) 382-3447
                 </span>
-                <p className="text-[#7A6C5B]">Hours: Mon – Fri, 7:00 AM – 4:00 PM</p>
+                <p className="text-charcoal-light">Hours: Mon – Fri, 7:00 AM – 4:00 PM</p>
               </div>
-
               <div>
-                <strong className="block text-sm text-[#1F382B]">
+                <strong className="block text-sm text-charcoal">
                   Wholesale Desk Email:
                 </strong>
-                <span className="font-mono text-sm font-semibold text-[#1F382B]">
+                <span className="font-mono text-sm font-semibold text-charcoal">
                   orders@eggeat.local
                 </span>
               </div>
-
               <div>
-                <strong className="block text-sm text-[#1F382B]">
+                <strong className="block text-sm text-charcoal">
                   Farm Gate Honor Stand:
                 </strong>
                 <p>Open 7 Days a week &bull; Dawn to Dusk</p>
-                <p className="text-[#7A6C5B]">
+                <p className="text-charcoal-light">
                   Cash, check, or Venmo honor payment on site.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Wholesale Logistics & Terms FAQ */}
-          <div className="bg-[#FFFDFB] rounded-2xl border border-[#E2D6C6] p-6 sm:p-8 space-y-4">
-            <h3 className="font-serif-farm text-lg font-bold text-[#1F382B]">
-              Wholesale Terms & Protocols
+          {/* Wholesale Terms */}
+          <div className="bg-white rounded-2xl border border-eggshell-deep p-6 sm:p-8 space-y-4 shadow-sm">
+            <h3 className="font-serif-farm text-lg font-bold text-charcoal">
+              Wholesale Terms &amp; Protocols
             </h3>
 
-            <div className="space-y-3 text-xs text-[#524436]">
-              <div className="border-b border-[#ECE2D2] pb-2.5">
-                <p className="font-bold text-[#1F382B]">Minimum Order Quantities:</p>
-                <p className="text-[#695B4C]">
-                  Direct van delivery requires a minimum of 2 half-cases (12 thirty-egg flats = 360 eggs) or 3 retail master cases.
-                </p>
-              </div>
-
-              <div className="border-b border-[#ECE2D2] pb-2.5">
-                <p className="font-bold text-[#1F382B]">Delivery Routes & Radius:</p>
-                <p className="text-[#695B4C]">
-                  Refrigerated transit within a 50-mile radius of Millfield Valley on scheduled Tuesday and Friday route runs.
-                </p>
-              </div>
-
-              <div className="border-b border-[#ECE2D2] pb-2.5">
-                <p className="font-bold text-[#1F382B]">Chef Culinary Trials:</p>
-                <p className="text-[#695B4C]">
-                  Executive chefs and head bakers can request a complimentary 30-egg sample flat for yolk emulsion and baking tests.
-                </p>
-              </div>
-
-              <div>
-                <p className="font-bold text-[#1F382B]">Billing & Invoicing:</p>
-                <p className="text-[#695B4C]">
-                  Net-30 billing available for established commercial accounts upon credit verification.
-                </p>
-              </div>
+            <div className="space-y-3 text-xs text-charcoal-light">
+              {[
+                {
+                  q: "Minimum Order Quantities:",
+                  a: "Direct van delivery requires a minimum of 2 half-cases (12 thirty-egg flats = 360 eggs) or 3 retail master cases.",
+                },
+                {
+                  q: "Delivery Routes & Radius:",
+                  a: "Refrigerated transit within a 50-mile radius of Millfield Valley on scheduled Tuesday and Friday route runs.",
+                },
+                {
+                  q: "Chef Culinary Trials:",
+                  a: "Executive chefs and head bakers can request a complimentary 30-egg sample flat for yolk emulsion and baking tests.",
+                },
+                {
+                  q: "Billing & Invoicing:",
+                  a: "Net-30 billing available for established commercial accounts upon credit verification.",
+                },
+              ].map((item) => (
+                <div key={item.q} className="border-b border-eggshell-mid pb-2.5 last:border-0 last:pb-0">
+                  <p className="font-bold text-charcoal">{item.q}</p>
+                  <p>{item.a}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Retail Consumer Redirect */}
-          <div className="bg-[#EAE2D5] rounded-xl p-5 border border-[#D5C9B7] text-xs space-y-2">
-            <h4 className="font-bold text-[#1F382B] uppercase tracking-wider text-[11px]">
+          {/* Retail Redirect */}
+          <div className="bg-yolk-xlight rounded-xl p-5 border border-yolk/30 text-xs space-y-2">
+            <h4 className="font-bold text-charcoal uppercase tracking-wider text-[11px]">
               Looking for Just a Carton or Two?
             </h4>
-            <p className="text-[#594B3C]">
+            <p className="text-charcoal-light">
               We do not sell single retail dozens through this wholesale form. Please check our local farmers markets or partner grocers:
             </p>
             <Link
               href="/where-to-buy"
-              className="inline-block font-bold text-[#1F382B] hover:text-[#D97706] underline"
+              className="inline-block font-bold text-charcoal hover:text-yolk-darker underline transition"
             >
-              View Farmers Markets & Grocery Stockists &rarr;
+              View Farmers Markets &amp; Grocery Stockists &rarr;
             </Link>
           </div>
         </div>

@@ -16,7 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full scroll-smooth">
-      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#2C2723] antialiased selection:bg-amber-200 selection:text-amber-900">
+      {/* eggwhite background + charcoal text for every page */}
+      <body className="min-h-full flex flex-col bg-eggwhite text-charcoal antialiased selection:bg-yolk selection:text-charcoal">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

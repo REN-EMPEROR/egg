@@ -1,30 +1,49 @@
 @import "tailwindcss";
 
+/* ─── eggeat Design Tokens ─────────────────────────────────────────────────── */
+@theme {
+  /* Brand palette */
+  --color-yolk:         #FBBF24;  /* amber-400 – primary CTA, accents */
+  --color-yolk-dark:    #F59E0B;  /* amber-500 – hover state */
+  --color-yolk-darker:  #D97706;  /* amber-600 – deep hover / borders */
+  --color-yolk-light:   #FEF3C7;  /* amber-100 – tinted backgrounds */
+  --color-yolk-xlight:  #FFFBEB;  /* amber-50  – very light tint */
+
+  --color-eggwhite:     #FAFAF9;  /* near-white page background */
+  --color-eggshell:     #F5F0E8;  /* slightly warm section backgrounds */
+  --color-eggshell-mid: #EDE8DF;  /* card / input borders */
+  --color-eggshell-deep:#E2D9CC;  /* dividers */
+
+  --color-charcoal:     #1F2937;  /* primary readable text */
+  --color-charcoal-mid: #374151;  /* headings */
+  --color-charcoal-light:#6B7280; /* secondary text */
+
+  /* Accent (used sparingly for nav banner / footer, preserves farm feel) */
+  --color-farm:         #1F382B;
+  --color-farm-mid:     #2A4D3B;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #FAF7F2;
-  --foreground: #2C2723;
-  --farm-green: #1F382B;
-  --farm-green-light: #2A4D3B;
-  --farm-gold: #D97706;
-  --farm-amber: #B45309;
-  --farm-cream: #F5EFEB;
-  --farm-border: #E5DDD3;
+  --background: var(--color-eggwhite);
+  --foreground: var(--color-charcoal);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
 }
 
-/* Rustic serif font utility for headings */
+/* ─── Typography helpers ──────────────────────────────────────────────────── */
 .font-serif-farm {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
-/* Custom subtle rustic background pattern */
-.bg-rustic-grain {
-  background-color: #FAF7F2;
-  background-image: radial-gradient(rgba(44, 39, 35, 0.04) 1px, transparent 0);
-  background-size: 24px 24px;
+/* ─── Section helpers ─────────────────────────────────────────────────────── */
+/* Subtle egg-dot watermark pattern */
+.bg-egg-dots {
+  background-image: radial-gradient(rgba(251, 191, 36, 0.12) 1px, transparent 0);
+  background-size: 22px 22px;
 }
