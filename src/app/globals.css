@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF7F2;
+  --foreground: #2C2723;
+  --farm-green: #1F382B;
+  --farm-green-light: #2A4D3B;
+  --farm-gold: #D97706;
+  --farm-amber: #B45309;
+  --farm-cream: #F5EFEB;
+  --farm-border: #E5DDD3;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Rustic serif font utility for headings */
+.font-serif-farm {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+/* Custom subtle rustic background pattern */
+.bg-rustic-grain {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(rgba(44, 39, 35, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
